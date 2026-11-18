@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#030712" />
+  <meta name="description" content="Apex AI - elite exam study assistant and AI tutor for engineering students at Murang'a University of Technology and other Kenyan universities." />
+  <title>Apex AI | Engineering Exam Tutor</title>
+  <link rel="icon" type="image/png" href="avatar.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <!-- Boot loader -->
+  <div id="boot" class="boot">
+    <img src="avatar.png" alt="" class="boot-logo" />
+    <div class="boot-text">INITIALISING APEX AI<span class="dots"></span></div>
+  </div>
+
+  <main id="app">
+
+    <!-- ================= AUTH ================= -->
+    <section id="view-auth" class="view hidden">
+      <div class="auth-wrap">
+        <div class="auth-card glass neon">
+          <div class="auth-brand">
+            <img src="avatar.png" alt="Apex AI" class="auth-avatar" />
+            <h1 class="logo">APEX<span>AI</span></h1>
+            <p class="tagline">Elite exam revision for MUT &amp; Kenyan engineering students</p>
+            <div class="status-row"><span class="status-dot"></span> SYSTEM ONLINE</div>
+          </div>
+
+          <div class="tabs" role="tablist">
+            <button class="tab active" data-mode="login" role="tab">LOG IN</button>
+            <button class="tab" data-mode="signup" role="tab">SIGN UP</button>
+          </div>
+
+          <form id="auth-form" novalidate>
+            <label class="field">
+              <span>Email</span>
+              <input type="email" id="auth-email" autocomplete="email" placeholder="you@students.mut.ac.ke" required />
+            </label>
+            <label class="field">
+              <span>Password</span>
+              <input type="password" id="auth-password" autocomplete="current-password" placeholder="At least 8 characters" minlength="8" required />
+            </label>
+            <div id="auth-msg" class="form-msg" role="alert"></div>
+            <button type="submit" id="auth-submit" class="btn btn-lime btn-block">
+              <span class="btn-label">ACCESS APEX AI</span>
+            </button>
+          </form>
+
+          <p class="auth-foot">Built by <strong>Patrick Njoroge</strong> &middot; Structura Digital Solutions</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= DASHBOARD ================= -->
+    <section id="view-dash" class="view hidden">
+      <header class="topbar glass">
+        <div class="topbar-left">
+          <img src="avatar.png" alt="Apex AI" class="avatar-sm" />
+          <div class="logo logo-sm">APEX<span>AI</span></div>
+        </div>
+        <div class="topbar-right">
+          <div class="fq-counter pill" id="dash-counter">Free Questions Remaining: 10 / 10</div>
+          <span class="user-email" id="user-email"></span>
+          <button class="btn btn-ghost btn-sm" id="logout-btn">LOG OUT</button>
+        </div>
+      </header>
+
+      <div class="dash-body">
+        <div class="hero">
+          <div class="status-row"><span class="status-dot"></span> AI TUTOR READY</div>
+          <h2>Select your <span class="grad">unit</span>. Conquer the exam.</h2>
+          <p>Six first-year engineering units, tuned for MUT. Pick one to start revising with Apex AI.</p>
+        </div>
+        <div id="units-grid" class="units-grid"></div>
+        <footer class="dash-foot">Built by Patrick Njoroge, hybrid-tech civil engineer at Murang'a University of Technology &middot; Structura Digital Solutions</footer>
+      </div>
+    </section>
+
+    <!-- ================= CHAT ================= -->
+    <section id="view-chat" class="view hidden">
+      <div class="chat-shell">
+        <header class="chat-head glass">
+          <div class="chat-id">
+            <div class="avatar-ring"><img src="avatar.png" alt="Apex AI" class="avatar-md" /></div>
+            <div>
+              <div class="logo logo-sm">APEX<span>AI</span></div>
+              <div class="status-row small"><span class="status-dot"></span> ONLINE</div>
+            </div>
+          </div>
+          <div class="chat-meta">
+            <div class="unit-badge"><span id="unit-badge-text">01 &middot; Unit</span></div>
+            <button class="btn btn-outline btn-sm" id="change-unit">CHANGE UNIT</button>
+            <div class="fq-counter pill" id="chat-counter">Free Questions Remaining: 10 / 10</div>
+          </div>
+        </header>
+
+        <div id="messages" class="messages" aria-live="polite"></div>
+
+        <div class="composer-zone">
+          <div id="chips" class="chips"></div>
+          <form id="chat-form" class="composer glass">
+            <textarea id="chat-input" rows="1" maxlength="2000" placeholder="Ask Apex AI anything about this unit..."></textarea>
+            <button type="submit" id="send-btn" class="btn btn-lime send-btn" aria-label="Send">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= PAYMENT MODAL ================= -->
+  <div id="pay-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="pay-title">
+    <div class="modal-card glass neon-strong">
+      <button class="modal-close" id="pay-close" aria-label="Close">&times;</button>
+      <div class="pay-icon"><img src="avatar.png" alt="" /></div>
+
+      <div id="pay-form-state">
+        <h2 id="pay-title" class="pay-title">UNLIMITED EXAM REVISION UNLOCKED</h2>
+        <p class="pay-sub">You have used your 10 free questions. Unlock unlimited daily revision across all engineering units for just KES 10.</p>
+        <div class="price-badge"><span>KES</span> 10</div>
+        <form id="pay-form" novalidate>
+          <label class="field">
+            <span>M-Pesa phone number</span>
+            <input type="tel" id="pay-phone" inputmode="numeric" autocomplete="tel" placeholder="07XXXXXXXX" maxlength="16" required />
+          </label>
+          <div id="pay-msg" class="form-msg" role="alert"></div>
+          <button type="submit" id="pay-submit" class="btn btn-lime btn-block">
+            <span class="btn-label">Authorize &amp; Pay KES 10 via M-Pesa</span>
+          </button>
+        </form>
+        <p class="secure-note">Secure STK push &middot; You will enter your M-Pesa PIN on your phone</p>
+      </div>
+
+      <div id="pay-wait-state" class="pay-state hidden">
+        <div class="spinner"></div>
+        <h3>Check your phone</h3>
+        <p>Enter your M-Pesa PIN on the prompt to pay KES 10. This page updates automatically.</p>
+      </div>
+
+      <div id="pay-success-state" class="pay-state hidden">
+        <div class="big-check">&#10003;</div>
+        <h3>Payment confirmed</h3>
+        <p>Unlimited revision is now active. Let's go!</p>
+      </div>
+
+      <div id="pay-fail-state" class="pay-state hidden">
+        <div class="big-x">&times;</div>
+        <h3 id="pay-fail-title">Payment not completed</h3>
+        <p id="pay-fail-text"></p>
+        <button class="btn btn-lime" id="pay-retry">TRY AGAIN</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+</body>
+</html>
