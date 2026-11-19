@@ -4,7 +4,7 @@ Exam study assistant and AI tutor for MUT engineering students. Built by Patrick
 
 ## Files
 
-- `index.html`, `style.css`, `app.js`, `avatar.png`: frontend (static)
+- `index.html`, `style.css`, `app.js`, `avatar.png.webp`: frontend (static)
 - `api/chat.js`: Gemini tutor, verifies the Supabase login and enforces the 10 free questions server-side
 - `api/pay.js`: starts the M-Pesa STK push (KES 10)
 - `api/mpesa-callback.js`: Daraja callback, sets `is_upgraded = true` on confirmed payment
